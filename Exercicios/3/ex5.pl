@@ -1,6 +1,6 @@
 
 mymember(X,[X|_]).
-mymember(X,[_Y|L]):- mymember(X,L).
+mymember(X,[_|L]):- mymember(X,L).
 
 last(L,X) :- append(_,[X],L).
 
