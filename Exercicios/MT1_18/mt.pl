@@ -119,4 +119,30 @@ getBest([],_,[]) :- !.
 getBest([N-Company|Ls],N,[Company|Cs]) :- !,getBest(Ls,N,Cs).
 getBest(_,_,[]).
 
-%%%%%%%%%%%%%%%%%%%%%%%%% EX 9 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%% EX 9  // EX 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+dif_max_2(X,Y) :- X < Y, X >= Y-2.
+
+make_pairs(L,P,S) :-
+  findall(N1-N2,(member(N1,L),member(N2,L),N1 \= N2,M =.. [P,N1,N2],M),Pairs),
+  filterMatched(Pairs,[],S).
+
+filterMatched([],_,[]).
+filterMatched([N1-N2|Ps],Aux,[S1-S2|Ss]) :-
+  \+member(N1,Aux),\+member(N2,Aux),
+  S1 is N1,S2 is N2,
+  append([N1,N2],Aux,Aux2),% add !, if ex not 11
+  filterMatched(Ps,Aux2,Ss).
+
+filterMatched([_|Ps],Aux,S) :-
+  filterMatched(Ps,Aux,S).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% EX 11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+make_pairs_2(L,P,S) :-
+  findall(N1-N2,(member(N1,L),member(N2,L),N1 \= N2,M =.. [P,N1,N2],M),Pairs),
+  setof(N-F,(filterMatched(Pairs,[],F),length(F,N)),Max),
+  reverse(Max,[_-S|_]).
+
+make_max_pairs(L,P,S) :-
+  make_pairs_2(L,P,S).
