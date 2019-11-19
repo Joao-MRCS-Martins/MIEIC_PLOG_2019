@@ -207,15 +207,3 @@ minJogadas(P1,P2,Curr,N) :-
 minJogadas(P1,P2,Curr,N) :-
   N1 is Curr +1,
   minJogadas(P1,P2,N1,N).
-
-
-
-
-
-
-
-
-
-
-
-
