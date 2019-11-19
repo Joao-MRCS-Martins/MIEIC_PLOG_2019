@@ -18,8 +18,6 @@ flight('FR5484','LEMD','LPPR',1935,105,'RYR').
 flight('AF1024','LFPG','LPPT',940,155,'AFR').
 flight('AF1025','LPPT','LFPG',1310,155,'AFR').
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% EX 1 %%%%%%%%%%%%%%%%%%%%%%%%%
 short(Flight) :-
   flight(Flight,_,_,_,Dur,_),
@@ -84,6 +82,27 @@ getDiffTime(T1,T2,Diff) :-
   Diff is DiffH//60 + (T2M - T1M).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EX 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+tripDays([_],_,[],1).
+tripDays([],_,[],1).
+tripDays([C1,C2|Rs],Time,[H1|Hs],Days):-
+  setof(H-F,(flight(F,Dep,Arr,H,_,_),airport(_,Dep,C1),airport(_,Arr,C2),H>Time),[H1-ID|_]),!,
+  arrivalTime(ID,ArrT),
+  getAddedTime(ArrT,30,NewT),
+  tripDays([C2|Rs],NewT,Hs,Days).
+
+tripDays([C1,C2|Cs],_,H,Days) :-
+  flight(_,Dep,Arr,_,_,_),airport(_,Dep,C1),airport(_,Arr,C2),
+  tripDays([C1,C2|Cs],0,H,D1),
+  Days is D1 +1.
+
+getAddedTime(OldT,Mins,NewT) :-
+  OldM is OldT mod 100,
+  Maux is OldM + Mins,
+  OldH is OldT - OldM,
+  NewH is OldH/100 + Maux/60,
+  NewM is Maux mod 60,
+  NewT is NewH*100+NewM.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EX 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 avgFlightLengthFromAirport(ID,Avg) :-
