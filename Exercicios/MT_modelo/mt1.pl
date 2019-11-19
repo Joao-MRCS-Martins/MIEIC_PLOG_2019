@@ -112,6 +112,7 @@ inverte([S|Set],Aux,L):-
 %todas as performances cujos participantes tem uma idade menor ou igual a Q. O cut utilizado 
 %neste caso é verde, pois apenas evita explorar espaço de pesquisa onde é impossivel estar 
 %uma solução.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% P10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %O seguinte predicado recebe como argumento um numero e X e uma sequencia de numeros L, e 
 %verifica se a condição acima indicada, existe. Ou seja, se há uma sub-sequencia, começada e
@@ -119,6 +120,7 @@ inverte([S|Set],Aux,L):-
 %O length(Mid,X) confirma se o comprimento do intervalo é X; append(L1,[X|_],L) vai obter a 
 %subsequencia do inicio até antes do segundo X, L1; append(_[X|Mid],L1), vai obter a 
 %sequencia do meio dos numeros X, a partir de L1.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% P11 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 impoe(X,L) :-
     length(Mid,X),
@@ -138,29 +140,3 @@ impoe_list(N,L) :-
     N1 is N-1,
     impoe(N,L),
     impoe_list(N1,L).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
