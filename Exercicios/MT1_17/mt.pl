@@ -112,29 +112,3 @@ reverse([],R,R).
 reverse([L1|Ls],Raux,R) :-
   append([L1],Raux,Raux2),
   reverse(Ls,Raux2,R).
-
-%%%%%%%%%%%%%%%%%%%% EX 14 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-ex14(D) :-
-  Dendo = [1,
-            [2,
-              [3,
-                [5,
-                  [8,
-                    australia,
-                    [9,
-                      [10,
-                        stahelena,
-                        anguila],
-                      georgiadosul]],
-                reinounido],
-              [6,
-                servia,
-                franca]],
-            [4,
-              [7,
-                niger,
-                india],
-              irlanda]],
-            brasil],
-distance(brasil,niger,Dendo,D).
-%TO CONTINUE
