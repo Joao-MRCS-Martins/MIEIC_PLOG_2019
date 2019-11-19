@@ -21,8 +21,6 @@ played('A Player','Carrier Shift: Game Over',48,24).
 played('A-Star Player','Duas Botas',37,16).
 played('Best Player Ever','Duas Botas',33,22).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EX 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 achievedALot(Player) :-
   played(Player,_,_,Per),
@@ -137,6 +135,6 @@ ex14(D) :-
                 niger,
                 india],
               irlanda]],
-            brasil],2
+            brasil],
 distance(brasil,niger,Dendo,D).
 %TO CONTINUE
