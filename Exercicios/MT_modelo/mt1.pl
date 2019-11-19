@@ -42,18 +42,10 @@ getTime([_|Rest],N,T):-
     getTime(Rest,N1,T).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% P3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%patientJuri(M) :-
-%    getJuryTimes(M,[],L),
-%    countPatience(L,0,C),
-%    C > 1.
-%
-%getJuryTimes(M,Aux,L) :-
-%    !,performance(E,L),
-%    getJuryTime(E,M,T),
-%    append(Aux,[T],Aux2),
-%    getJuryTimes(M,Aux2,L).
-%
-%getJuryTimes(_,L,L).
+patientJuri(M) :-
+   getJuryTime(E1,M,120),
+   getJuryTime(E2,M,120),
+   E1 \= E2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% P4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 bestParticipant(P1,P2,P):-
